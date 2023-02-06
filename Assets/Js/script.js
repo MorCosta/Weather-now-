@@ -26,10 +26,10 @@ form.addEventListener("submit", (event) => {
 // Search weather for the given city
 function searchWeather(city) {
   // API endpoint for current weather
-  const currentWeatherEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+  const currentWeatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
   // API endpoint for 5-day forecast
-  const forecastEndpoint = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`;
+  const forecastEndpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`;
 
   // Fetch current weather data
   fetch(currentWeatherEndpoint)
@@ -58,7 +58,7 @@ function displayCurrentWeather(data) {
   const currentDate = moment().format("DD/MM/YYYY");
 
   // Weather icon
-  const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
   // Temperature
   const temperature = (data.main.temp - 273.15).toFixed(1);
@@ -115,7 +115,7 @@ function addToSearchHistory(city) {
       // Forecast date
       const forecastDate = moment.unix(firstReading.dt).format("DD/MM/YYYY");
       // Forecast icon
-      const icon = `http://openweathermap.org/img/wn/${firstReading.weather[0].icon}@2x.png`;
+      const icon = `https://openweathermap.org/img/wn/${firstReading.weather[0].icon}@2x.png`;
       // Forecast temperature (convert from Kelvin to Celsius)
       const temperature = firstReading.main.temp - 273.15;
       // Forecast humidity
