@@ -83,46 +83,6 @@ function displayCurrentWeather(data) {
   `;
 }
 
-// Display 5-day forecast on the page
-function displayForecast(data) {
-    // Clear previous data
-    forecastSection.innerHTML = "";
-  
-    // Get forecast data for every 3 hours for the next 5 days
-    const forecastData = data.list.filter((reading) => {
-        return (
-          moment.unix(reading.dt).diff(moment(), "days") < 5
-        );
-      });
-      
-    // Get only the first 5 items from forecastData array
-    const fiveDayForecast = forecastData.slice(0, 5);
-  
-    // Append forecast data to the forecast section
-    fiveDayForecast.forEach((reading) => {
-      // Forecast date
-      const forecastDate = moment.unix(reading.dt).format("DD/MM/YYYY");
-      // Forecast icon
-      const icon = `http://openweathermap.org/img/wn/${reading.weather[0].icon}@2x.png`;
-      // Forecast temperature
-      const temperature = reading.main.temp;
-      // Forecast humidity
-      const humidity = reading.main.humidity;
-  
-      forecastSection.innerHTML += `
-        <div class="col-md-2">
-          <div class="card">
-            <div class="card-body">
-              <h3>${forecastDate}</h3>
-              <img src="${icon}" />
-              <p>Temperature: ${temperature} &#8451;</p>
-              <p>Humidity: ${humidity}%</p>
-            </div>
-          </div>
-        </div>
-      `;
-    });
-}
 
 
 // Add city to search history
@@ -152,27 +112,27 @@ function addToSearchHistory(city) {
       // Get the first reading for the day (which should be the first reading for that day)
       const firstReading = dayData[0];
   
-      // Forecast day of the week
-      const forecastDay = moment.unix(firstReading.dt).format("dddd");
-      // Forecast wind speed
-      const windSpeed = firstReading.wind.speed;
+      // Forecast date
+      const forecastDate = moment.unix(firstReading.dt).format("DD/MM/YYYY");
       // Forecast icon
       const icon = `http://openweathermap.org/img/wn/${firstReading.weather[0].icon}@2x.png`;
       // Forecast temperature
       const temperature = firstReading.main.temp;
       // Forecast humidity
       const humidity = firstReading.main.humidity;
+      // Forecast wind speed
+      const windSpeed = firstReading.wind.speed;
   
       // Append forecast data to the forecast section
       forecastSection.innerHTML += `
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
-              <h3>${forecastDay}</h3>
+              <h4>${forecastDate}</h4>
               <img src="${icon}" />
               <p>Temperature: ${temperature} &#8451;</p>
               <p>Humidity: ${humidity}%</p>
-              <p>Wind Speed: ${windSpeed} m/s</p>
+              <p>Wind Speed: ${windSpeed} mph</p>
             </div>
           </div>
         </div>
