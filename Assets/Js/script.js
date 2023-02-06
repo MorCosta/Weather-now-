@@ -99,7 +99,7 @@ function addToSearchHistory(city) {
   function displayForecast(data) {
     // Clear previous data
     forecastSection.innerHTML = "";
-  
+
     // Loop through 5 days
     for (let i = 0; i < 5; i++) {
       // Get the data for each day
@@ -108,21 +108,21 @@ function addToSearchHistory(city) {
           moment.unix(reading.dt).diff(moment(), "days") === i
         );
       });
-  
+
       // Get the first reading for the day (which should be the first reading for that day)
       const firstReading = dayData[0];
-  
+
       // Forecast date
       const forecastDate = moment.unix(firstReading.dt).format("DD/MM/YYYY");
       // Forecast icon
       const icon = `http://openweathermap.org/img/wn/${firstReading.weather[0].icon}@2x.png`;
-      // Forecast temperature
-      const temperature = firstReading.main.temp;
+      // Forecast temperature (convert from Kelvin to Celsius)
+      const temperature = firstReading.main.temp - 273.15;
       // Forecast humidity
       const humidity = firstReading.main.humidity;
       // Forecast wind speed
       const windSpeed = firstReading.wind.speed;
-  
+
       // Append forecast data to the forecast section
       forecastSection.innerHTML += `
         <div class="col-md-3">
@@ -130,7 +130,7 @@ function addToSearchHistory(city) {
             <div class="card-body">
               <h4>${forecastDate}</h4>
               <img src="${icon}" />
-              <p>Temperature: ${temperature} &#8451;</p>
+              <p>Temperature: ${temperature.toFixed(1)} &#8451;</p>
               <p>Humidity: ${humidity}%</p>
               <p>Wind Speed: ${windSpeed} mph</p>
             </div>
@@ -139,6 +139,7 @@ function addToSearchHistory(city) {
       `;
     }
   }
+
   
   
   
