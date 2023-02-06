@@ -9,7 +9,7 @@ The user just need to navigate to the this link: https://morcosta.github.io/Work
 ## Usage
 To get started, simply visit the website and type the city you need the information for in the search bar. The website will then display the current weather conditions for the city you searched and the forecast for the next 5 days. 
 
-![alt text](https://github.com/MorCosta/Work-day-scheduler-/blob/396c2191d8a54bb0703b73cf549779cfabe27e5a/assets/Images/Screenshot%20.png)
+![alt text](https://github.com/MorCosta/Weather-now-/blob/d024034ae75a17ff76a56fc192bde40fc5d1f19f/Assets/Images/Screenshot.png)
 
 
 
