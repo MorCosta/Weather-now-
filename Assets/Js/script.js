@@ -1,5 +1,5 @@
 // API key for OpenWeatherMap
-const API_KEY = "ff1901c831e8cad199f1473307970666";
+const API_KEY = "2d7f3e77a010b0813f0f39b7aebce04f";
 
 // Form element
 const form = document.querySelector("#search-form");
